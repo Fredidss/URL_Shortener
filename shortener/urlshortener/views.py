@@ -23,13 +23,13 @@ def redirect_to_original(request, short_url):
 
 
 from rest_framework import generics
-from .models import URLShortener
+from .models import urlshortener
 from .serializers import urlshortenerSerializer
 
 class URLShortenerListCreate(generics.ListCreateAPIView):
-    queryset = URLShortener.objects.all()
+    queryset = urlshortener.objects.all()
     serializer_class = urlshortenerSerializer
 
 class URLShortenerRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
-    queryset = URLShortener.objects.all()
+    queryset = urlshortener.objects.all()
     serializer_class = urlshortenerSerializer
