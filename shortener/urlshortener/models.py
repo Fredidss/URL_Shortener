@@ -2,7 +2,7 @@ from django.db import models
 import string
 import random
 
-class URLShortener(models.Model):
+class urlshortener(models.Model):
     original_url = models.URLField(unique=True)
     short_url = models.CharField(max_length=5, unique=True)
     visits = models.IntegerField(default=0)
@@ -18,9 +18,9 @@ class URLShortener(models.Model):
 
     @staticmethod
     def get_shortened_urls():
-        return URLShortener.objects.all()
+        return urlshortener.objects.all()
 
     @staticmethod
     def get_url_by_shortened(short_url):
-        return URLShortener.objects.get(short_url=short_url)
+        return urlshortener.objects.get(short_url=short_url)
 

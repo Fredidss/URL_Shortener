@@ -19,3 +19,16 @@ def redirect_to_original(request, short_url):
     url_obj.visit_count += 1
     url_obj.save()
     return redirect(url_obj.original_url)
+
+
+from rest_framework import generics
+from .models import URLShortener
+from .serializers import URLShortenerSerializer
+
+class URLShortenerListCreate(generics.ListCreateAPIView):
+    queryset = URLShortener.objects.all()
+    serializer_class = URLShortenerSerializer
+
+class URLShortenerRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
+    queryset = URLShortener.objects.all()
+    serializer_class = URLShortenerSerializer
