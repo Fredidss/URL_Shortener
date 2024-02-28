@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from .models import URL
+
 import string
 import random
 
@@ -23,12 +24,12 @@ def redirect_to_original(request, short_url):
 
 from rest_framework import generics
 from .models import URLShortener
-from .serializers import URLShortenerSerializer
+from .serializers import urlshortenerSerializer
 
 class URLShortenerListCreate(generics.ListCreateAPIView):
     queryset = URLShortener.objects.all()
-    serializer_class = URLShortenerSerializer
+    serializer_class = urlshortenerSerializer
 
 class URLShortenerRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = URLShortener.objects.all()
-    serializer_class = URLShortenerSerializer
+    serializer_class = urlshortenerSerializer
